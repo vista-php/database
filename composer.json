@@ -1,9 +1,9 @@
 {
-  "name": "dusanrajcevic/vista-php",
+  "name": "vista-php/database",
   "type": "library",
   "description": "Database abstraction layer",
   "keywords": ["database", "abstraction", "layer"],
-  "version": "1.0.0",
+  "version": "1.0.1",
   "authors": [
     {
       "name": "Dusan Rajcevic",
