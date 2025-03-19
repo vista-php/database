@@ -277,7 +277,7 @@ class ModelTest extends TestCase
         $this->assertTrue($result);
     }
 
-    public function testSave()
+    public function testSaveInsert()
     {
         $this->queryBuilder->shouldReceive('save')
             ->andReturn(true);
@@ -287,6 +287,26 @@ class ModelTest extends TestCase
             ->andReturn(4);
 
         $model = new TestModel($this->qbFactory);
+        $model->column2 = 5;
+
+        $result = $model->save();
+
+        $this->assertInstanceOf(TestModel::class, $result);
+    }
+
+    public function testSaveUpdate()
+    {
+        $this->queryBuilder->shouldReceive('save')
+            ->andReturn(true);
+        $this->queryBuilder->shouldReceive('update')
+            ->andReturn($this->queryBuilder);
+
+        $this->queryBuilder->shouldReceive('where')
+            ->with('column1', 5)
+            ->andReturn($this->queryBuilder);
+
+        $model = new TestModel($this->qbFactory);
+        $model->column1 = 1;
         $model->column2 = 5;
 
         $result = $model->save();

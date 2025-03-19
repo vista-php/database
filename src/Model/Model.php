@@ -186,11 +186,11 @@ class Model implements ModelContract
     {
         $this->resetQueryBuilder();
 
-        if (empty($this->{$this->primaryKey})) {
+        if (empty($this->values[$this->primaryKey])) {
             $this->queryBuilder->insert($this->table, $this->values)->save();
             $this->{$this->primaryKey} = $this->queryBuilder->lastInsertId();
         } else {
-            $this->queryBuilder->update($this->table, $this->values)
+            $this->queryBuilder->update($this->table, $this->updateValues())
                 ->where($this->primaryKey, $this->{$this->primaryKey})
                 ->save();
         }
@@ -211,5 +211,13 @@ class Model implements ModelContract
         $this->queryBuilder->setModelClass(className: static::class);
         $this->queryBuilder->setPrimaryKey($this->primaryKey);
         $this->queryBuilder->select($this->columns)->from($this->table);
+    }
+
+    private function updateValues(): array
+    {
+        $values = $this->values;
+        unset($values[$this->primaryKey]);
+
+        return $values;
     }
 }
