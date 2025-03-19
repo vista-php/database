@@ -202,7 +202,10 @@ class Model implements ModelContract
     {
         $this->resetQueryBuilder();
 
-        return $this->queryBuilder->delete()->save();
+        return $this->queryBuilder
+            ->where($this->primaryKey, $this->{$this->primaryKey})
+            ->delete()
+            ->save();
     }
 
     private function resetQueryBuilder(): void

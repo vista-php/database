@@ -313,6 +313,25 @@ class ModelTest extends TestCase
 
         $this->assertInstanceOf(TestModel::class, $result);
     }
+
+    public function testDestroy()
+    {
+        $this->queryBuilder->shouldReceive('delete')
+            ->andReturn($this->queryBuilder);
+        $this->queryBuilder->shouldReceive('where')
+            ->with('column1', 1)
+            ->andReturn($this->queryBuilder);
+        $this->queryBuilder->shouldReceive('save')
+            ->andReturn(true);
+
+        $model = new TestModel($this->qbFactory);
+        $model->column1 = 1;
+        $model->column2 = 2;
+
+        $result = $model->destroy();
+
+        $this->assertTrue($result);
+    }
 }
 
 class TestModel extends Model
