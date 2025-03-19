@@ -337,7 +337,6 @@ class ModelTest extends TestCase
 class TestModel extends Model
 {
     protected string $table = 'tests';
-
     protected string $primaryKey = 'column1';
     protected array $columns = ['column1', 'column2'];
 }
