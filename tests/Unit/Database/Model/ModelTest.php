@@ -302,7 +302,7 @@ class ModelTest extends TestCase
             ->andReturn($this->queryBuilder);
 
         $this->queryBuilder->shouldReceive('where')
-            ->with('column1', 5)
+            ->with('column1', 1)
             ->andReturn($this->queryBuilder);
 
         $model = new TestModel($this->qbFactory);
