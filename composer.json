@@ -3,7 +3,7 @@
   "type": "library",
   "description": "Database abstraction layer",
   "keywords": ["database", "abstraction", "layer"],
-  "version": "1.0.2",
+  "version": "1.0.3",
   "authors": [
     {
       "name": "Dusan Rajcevic",
