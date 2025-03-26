@@ -71,7 +71,7 @@ class QueryBuilderObjectTest extends TestCase
      */
     public function testGetUpdate(): void
     {
-        $query = 'UPDATE tests2 SET name = tests.name FROM tests LEFT JOIN tests_2 ON test_id = tests.id RIGHT JOIN tests_3 ON tests_3.test_id = tests.id INNER JOIN tests_4 ON tests_4.test_id = tests.id WHERE id = :id';
+        $query = 'UPDATE tests2 SET name = tests.name WHERE id = :id';
         $this->obj->update = 'UPDATE tests2 SET name = tests.name';
         $this->obj->delete = 'DELETE';
 

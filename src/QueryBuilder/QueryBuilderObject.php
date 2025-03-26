@@ -123,12 +123,6 @@ final class QueryBuilderObject
     {
         return trim(
             $this->update
-            . (strlen($this->from) > 0
-                ? $this->from
-                . $this->leftJoin
-                . $this->rightJoin
-                . $this->innerJoin
-                : '')
             . $this->where
         );
     }
